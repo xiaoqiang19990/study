@@ -26,7 +26,7 @@ type Person struct {
 func main() {
 	session, err := mgo.Dial("localhost:27017")
 	if err != nil {
-		panic(err)
+		fmt.Println("mgo.Dial error:%v",err)
 	}
 	defer session.Close()
 
@@ -37,13 +37,13 @@ func main() {
 	err = c.Insert(&Person{"superWang", "13478808311"},
 		&Person{"David", "15040268074"})
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("c.insert error:%v",err)
 	}
 
 	result := Person{}
 	err = c.Find(bson.M{"name": "superWang"}).One(&result)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("c.find error:%v",err)
 	}
 
 	fmt.Println("Name:", result.Name)

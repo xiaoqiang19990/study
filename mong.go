@@ -48,4 +48,5 @@ func main() {
 
 	fmt.Println("Name:", result.Name)
 	fmt.Println("Phone:", result.Phone)
+	fmt.Println("test1")
 }
